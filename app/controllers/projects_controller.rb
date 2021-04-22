@@ -1,9 +1,14 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
+  http_basic_authenticate_with name: "desafiovamoscontodo", password: " XAHTJEAS23123%23" #, only: :index
+
+
 
   # GET /projects or /projects.json
   def index
-    @projects = Project.all
+    @q = Project.ransack(params[:q])
+    @projects = @q.result(distinct: true) 
+#    @projects = Project.all
   end
 
   # GET /projects/1 or /projects/1.json
