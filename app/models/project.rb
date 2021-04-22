@@ -1,8 +1,8 @@
 class Project < ApplicationRecord
     validates :name, presence: true
     validates :description, presence: true
-    validates :state, presence: true
-    enum :state {propuesta: 0, en_progreso: 1, terminado: 2} 
+    validates :status, presence: true
+    enum status: {propuesta: 0, en_progreso: 1, terminado: 2} 
 end
 
 
